@@ -12,14 +12,14 @@ class MoodSelectionViewController: UIViewController {
     @IBOutlet var moodSelector: ImageSelector!
     @IBOutlet var addMoodButton: UIButton!
     
-    var moods: [Mood] = [] {
+    private var moods: [Mood] = [] {
         didSet {
             currentMood = moods.first
             moodSelector.images = moods.map{ $0.image }
         }
     }
 
-    var currentMood: Mood? {
+    private var currentMood: Mood? {
         didSet {
             guard let currentMood = currentMood else {
                 addMoodButton.setTitle(nil, for: .normal)
@@ -31,7 +31,7 @@ class MoodSelectionViewController: UIViewController {
         }
     }
     
-    var moodsConfigurable: MoodsConfigurable!
+    private var moodsConfigurable: MoodsConfigurable!
     
     @IBAction private func moodSelectionChanged(_ sender: ImageSelector){
         let selectedIndex = sender.selectedIndex
